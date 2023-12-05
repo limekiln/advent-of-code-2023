@@ -1,0 +1,6 @@
+{
+    "editor.inlineSuggest.showToolbar": "always",
+    "bitoAI.codeCompletion.enableAutoCompletion": true,
+    "bitoAI.codeCompletion.setAutoCompletionTriggerLogic": 250,
+    "bitoAI.codeCompletion.enableCommentToCode": true
+}
