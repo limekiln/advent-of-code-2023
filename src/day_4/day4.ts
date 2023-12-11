@@ -39,14 +39,6 @@ export const calculateCardPoints = (card: Card): number => {
   return res;
 };
 
-const input = readLines(path.join(__dirName, 'src', 'day_4', 'input.txt'));
-
-const cards = parseInput(input);
-
-const solution = cards.reduce((acc, curr) => {
-  return acc + calculateCardPoints(curr);
-}, 0);
-
 export const executeRules = (cards: Card[]): number => {
   let res = new Array(cards.length).fill(1);
   for (let i = 0; i < cards.length; ++i) {
@@ -60,6 +52,15 @@ export const executeRules = (cards: Card[]): number => {
   return sumArray(res);
 };
 
-const solution2 = executeRules(parseInput(input));
+export const calcSolutionsDay4 = () => {
+  const input = readLines(path.join(__dirName, 'src', 'day_4', 'input.txt'));
+  const cards = parseInput(input);
 
-export { solution, solution2 };
+  const solution = cards.reduce((acc, curr) => {
+    return acc + calculateCardPoints(curr);
+  }, 0);
+
+  const solution2 = executeRules(parseInput(input));
+
+  return [solution, solution2];
+};

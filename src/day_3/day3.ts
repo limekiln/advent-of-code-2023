@@ -65,7 +65,7 @@ export const findAdjacentNumbers = (symbolPosition: ArrayCoordinate, schema: str
 export const findAllValidNumbers = (schema: string[][]): number[] => {
   const workingSchema = cloneDeep(schema);
   const symbols = findSymbols(workingSchema);
-  return symbols.flatMap((position) => {
+  return symbols.flatMap(position => {
     return findAdjacentNumbers(position, workingSchema);
   });
 };
@@ -73,7 +73,7 @@ export const findAllValidNumbers = (schema: string[][]): number[] => {
 export const findAllGearRatios = (schema: string[][]): number[] => {
   const workingSchema = cloneDeep(schema);
   const gears = findSymbols(workingSchema, true);
-  return gears.flatMap((position) => {
+  return gears.flatMap(position => {
     const adjacentParts = findAdjacentNumbers(position, workingSchema);
     if (adjacentParts.length >= 2)
       return adjacentParts.reduce((acc, curr) => {
@@ -84,12 +84,14 @@ export const findAllGearRatios = (schema: string[][]): number[] => {
   });
 };
 
-const input = readLines(path.join(__dirName, 'src', 'day_3', 'input.txt'));
-const schema = input.map((line) => line.split(''));
-const allNumbers = findAllValidNumbers(schema);
-const solution = sumArray(allNumbers);
+export const calcSolutionsDay3 = () => {
+  const input = readLines(path.join(__dirName, 'src', 'day_3', 'input.txt'));
+  const schema = input.map(line => line.split(''));
+  const allNumbers = findAllValidNumbers(schema);
+  const solution = sumArray(allNumbers);
 
-const gearRatios = findAllGearRatios(schema);
-const solution2 = sumArray(gearRatios);
+  const gearRatios = findAllGearRatios(schema);
+  const solution2 = sumArray(gearRatios);
 
-export { solution, solution2 };
+  return [solution, solution2];
+};

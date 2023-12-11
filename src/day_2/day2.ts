@@ -14,7 +14,7 @@ export type Game = {
 };
 
 export const parseRawDraws = (draws: string[]) => {
-  return draws.map((draw) => {
+  return draws.map(draw => {
     return draw.split(',').reduce<Draw>(
       (acc, curr) => {
         const [count, color] = curr.split(/(?=red|green|blue)/);
@@ -45,16 +45,16 @@ export const getGames = (games: string[]): Game[] => {
 export const findPossibleGames = (games: Game[]): number[] => {
   const protoBag: Draw = { red: 12, green: 13, blue: 14 };
   return games
-    .filter((game) => {
+    .filter(game => {
       return !game.draws.some(
-        (draw) => draw.red > protoBag.red || draw.green > protoBag.green || draw.blue > protoBag.blue
+        draw => draw.red > protoBag.red || draw.green > protoBag.green || draw.blue > protoBag.blue
       );
     })
-    .map((game) => game.id);
+    .map(game => game.id);
 };
 
 const findMinSets = (games: Game[]): Draw[] => {
-  return games.map((game) => {
+  return games.map(game => {
     return game.draws.reduce<Draw>(
       (acc, curr) => {
         if (curr.red > acc.red) acc.red = curr.red;
@@ -67,17 +67,18 @@ const findMinSets = (games: Game[]): Draw[] => {
   });
 };
 
-const input = readLines(path.join(__dirName, 'src', 'day_2', 'input.txt'), '\n');
+export const calcSolutionsDay2 = () => {
+  const input = readLines(path.join(__dirName, 'src', 'day_2', 'input.txt'), '\n');
 
-const games = getGames(input);
-const findSolution = () => {
-  return sumArray(findPossibleGames(games));
+  const games = getGames(input);
+  const findSolution = () => {
+    return sumArray(findPossibleGames(games));
+  };
+
+  const minSets = findMinSets(games);
+  const powers = minSets.map(set => set.red * set.green * set.blue);
+  const solution2 = sumArray(powers);
+
+  const solution = findSolution();
+  return [solution, solution2];
 };
-
-const minSets = findMinSets(games);
-const powers = minSets.map((set) => set.red * set.green * set.blue);
-const solution2 = sumArray(powers);
-
-const solution = findSolution();
-
-export { solution, solution2 };

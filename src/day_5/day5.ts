@@ -65,15 +65,15 @@ export const findCorrectLocation = (seedRanges: number[], dicts: Dict[]): number
   return loc;
 };
 
-const input = path.join(__dirName, 'src', 'day_5', 'input.txt');
+export const calcSolutionsDay5 = () => {
+  const input = path.join(__dirName, 'src', 'day_5', 'input.txt');
 
-const maps = extractMaps(input);
-const seeds = getSeeds(maps.shift()![0]);
-const dicts = buildsDicts(maps);
-const locations = seeds.map(seed => findLocation(seed, dicts));
+  const maps = extractMaps(input);
+  const seeds = getSeeds(maps.shift()![0]);
+  const dicts = buildsDicts(maps);
+  const locations = seeds.map(seed => findLocation(seed, dicts));
 
-const solution = Math.min(...locations);
-
-const solution2 = findCorrectLocation(seeds, dicts);
-
-export { solution, solution2 };
+  const solution = Math.min(...locations);
+  const solution2 = findCorrectLocation(seeds, dicts);
+  return [solution, solution2];
+};
