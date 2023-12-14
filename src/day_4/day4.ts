@@ -1,5 +1,6 @@
 import path from 'path';
 import { __dirName, readLines, sumArray } from '../../utils';
+import { PathLike } from 'fs';
 
 export type Card = {
   id: number;
@@ -52,8 +53,8 @@ export const executeRules = (cards: Card[]): number => {
   return sumArray(res);
 };
 
-export const calcSolutionsDay4 = () => {
-  const input = readLines(path.join(__dirName, 'src', 'day_4', 'input.txt'));
+export const calcSolutionsDay4 = (inputPath: PathLike) => {
+  const input = readLines(inputPath);
   const cards = parseInput(input);
 
   const solution = cards.reduce((acc, curr) => {

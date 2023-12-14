@@ -65,10 +65,8 @@ export const findCorrectLocation = (seedRanges: number[], dicts: Dict[]): number
   return loc;
 };
 
-export const calcSolutionsDay5 = () => {
-  const input = path.join(__dirName, 'src', 'day_5', 'input.txt');
-
-  const maps = extractMaps(input);
+export const calcSolutionsDay5 = (inputPath: PathLike) => {
+  const maps = extractMaps(inputPath);
   const seeds = getSeeds(maps.shift()![0]);
   const dicts = buildsDicts(maps);
   const locations = seeds.map(seed => findLocation(seed, dicts));

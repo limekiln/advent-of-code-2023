@@ -1,6 +1,7 @@
 import path from 'path';
 
 import { __dirName, readLines, sumArray } from '../../utils';
+import { PathLike } from 'fs';
 
 export type Draw = {
   red: number;
@@ -67,8 +68,8 @@ const findMinSets = (games: Game[]): Draw[] => {
   });
 };
 
-export const calcSolutionsDay2 = () => {
-  const input = readLines(path.join(__dirName, 'src', 'day_2', 'input.txt'), '\n');
+export const calcSolutionsDay2 = (inputPath: PathLike) => {
+  const input = readLines(inputPath);
 
   const games = getGames(input);
   const findSolution = () => {

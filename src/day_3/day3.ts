@@ -1,6 +1,7 @@
 import path from 'path';
 import { __dirName, readLines, sumArray } from '../../utils';
 import cloneDeep from 'lodash/cloneDeep';
+import { PathLike } from 'fs';
 
 type ArrayCoordinate = {
   row: number;
@@ -84,8 +85,8 @@ export const findAllGearRatios = (schema: string[][]): number[] => {
   });
 };
 
-export const calcSolutionsDay3 = () => {
-  const input = readLines(path.join(__dirName, 'src', 'day_3', 'input.txt'));
+export const calcSolutionsDay3 = (inputPath: PathLike) => {
+  const input = readLines(inputPath);
   const schema = input.map(line => line.split(''));
   const allNumbers = findAllValidNumbers(schema);
   const solution = sumArray(allNumbers);

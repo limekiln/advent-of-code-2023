@@ -46,10 +46,8 @@ export const getWinningOptions = (race: Race, results: number[]) => {
   return results.filter(result => result > race.targetRange);
 };
 
-export const calcSolutionsDay6 = () => {
-  const input = path.join(__dirName, 'src', 'day_6', 'input.txt');
-
-  const races = getRaces(input);
+export const calcSolutionsDay6 = (inputPath: PathLike) => {
+  const races = getRaces(inputPath);
   const wins = races.map(race => {
     const results = simulateRace(race);
     return getWinningOptions(race, results);
@@ -59,7 +57,7 @@ export const calcSolutionsDay6 = () => {
     return acc * curr.length;
   }, 1);
 
-  const trueRace = getRace(input);
+  const trueRace = getRace(inputPath);
   const trueResults = simulateRace(trueRace);
   const trueWinningOptions = getWinningOptions(trueRace, trueResults);
   const solution2 = trueWinningOptions.length;

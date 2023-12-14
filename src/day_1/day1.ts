@@ -1,6 +1,7 @@
 import path from 'path';
 
 import { __dirName, readLines } from '../../utils';
+import { PathLike } from 'fs';
 
 const parseAllDigitStrings = (digit: string) => {
   const NUMBER_MAP = {
@@ -34,8 +35,8 @@ export const parseConfig = (parsedConfig: string[], regex: RegExp) => {
 export const regex1 = /(?=(\d))/g;
 export const regex2 = /(?=(\d|one|two|three|four|five|six|seven|eight|nine))/g;
 
-export const calcSolutionsDay1 = () => {
-  const input = readLines(path.join(__dirName, 'src', 'day_1', 'input.txt'));
+export const calcSolutionsDay1 = (inputPath: PathLike) => {
+  const input = readLines(inputPath);
 
   // Part 1
   const solution = parseConfig(input, regex1);

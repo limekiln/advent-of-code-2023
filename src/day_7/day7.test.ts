@@ -1,5 +1,5 @@
 import path from 'path';
-import { Card, Hand, calcSolutionsDay7, getPower } from './day7';
+import { Card, calcSolutionsDay7, getPower } from './day7';
 import { __dirName } from '../../utils';
 
 describe('The final result for part 1', () => {
