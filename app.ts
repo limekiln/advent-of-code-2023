@@ -8,6 +8,7 @@ import { calcSolutionsDay6 } from './src/day_6/day6';
 import { calcSolutionsDay7 } from './src/day_7/day7';
 import { calcSolutionsDay8 } from './src/day_8/day8';
 import { __dirName, printSolutions, readLines } from './utils';
+import { calcSolutionsDay9 } from './src/day_9/day9';
 
 // Read parameters given in script call
 const day = parseInt(process.argv[2]);
@@ -36,6 +37,9 @@ switch (day) {
     break;
   case 8:
     printSolutions(calcSolutionsDay8(path.join(__dirName, 'src', 'day_8', 'input.txt')), day);
+    break;
+  case 9:
+    printSolutions(calcSolutionsDay9(path.join(__dirName, 'src', 'day_9', 'input.txt')), day);
     break;
   default:
     console.log('Invalid day');
